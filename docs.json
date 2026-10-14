@@ -1,0 +1,9 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "mint",
+  "name": "SDK",
+  "colors": { "primary": "#16A34A" },
+  "navigation": {
+    "groups": [{ "group": "JavaScript", "pages": ["install", "guides/usage"] }]
+  }
+}

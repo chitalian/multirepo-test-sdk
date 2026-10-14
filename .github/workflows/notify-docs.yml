@@ -1,0 +1,13 @@
+name: Notify docs repository
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - env:
+          GH_TOKEN: ${{ secrets.DOCS_DISPATCH_TOKEN }}
+        run: gh api repos/chitalian/multirepo-test-docs/dispatches -f event_type=docs-updated
