@@ -7,7 +7,7 @@ export type AcmeOptions = {
   apiKey?: string
   /** Defaults to https://api.acme.dev */
   baseUrl?: string
-  /** Times to retry a request that failed with a 5xx or network error. Defaults to 2. */
+  /** Times to retry a request that failed with a 5xx or network error. Defaults to 3. */
   maxRetries?: number
 }
 
@@ -28,7 +28,7 @@ export class Acme {
     if (!apiKey) throw new Error('Pass apiKey or set ACME_API_KEY')
     this.apiKey = apiKey
     this.baseUrl = options.baseUrl ?? 'https://api.acme.dev'
-    this.maxRetries = options.maxRetries ?? 2
+    this.maxRetries = options.maxRetries ?? 3
   }
 
   users = {
