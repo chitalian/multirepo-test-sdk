@@ -10,4 +10,13 @@ jobs:
     steps:
       - env:
           GH_TOKEN: ${{ secrets.DOCS_DISPATCH_TOKEN }}
-        run: gh api repos/chitalian/multirepo-test-docs/dispatches -f event_type=docs-updated
+          PAYLOAD: |
+            {
+              "event_type": "docs-updated",
+              "client_payload": {
+                "repo": "${{ github.repository }}",
+                "before": "${{ github.event.before }}",
+                "after": "${{ github.sha }}"
+              }
+            }
+        run: echo "$PAYLOAD" | gh api repos/chitalian/multirepo-test-docs/dispatches --input -
