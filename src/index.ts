@@ -40,6 +40,7 @@ export class Acme {
 
   orders = {
     list: (options: ListOptions & { status?: OrderStatus } = {}) => this.request<Page<Order>>('GET', '/v1/orders', query(options)),
+    get: (id: string) => this.request<Order>('GET', `/v1/orders/${encodeURIComponent(id)}`),
     create: (input: { userId: string; items: OrderItem[] }) => this.request<Order>('POST', '/v1/orders', undefined, input),
   }
 
