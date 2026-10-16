@@ -28,9 +28,13 @@ const order = await acme.orders.create({
   userId: 'usr_1',
   items: [{ sku: 'WIDGET-1', quantity: 2 }],
 })
+
+const fetched = await acme.orders.get(order.id)
 ```
 
 New orders start with status `pending`.
+
+`orders.get` returns a single order. If no order has that ID, it throws an `AcmeError` with status `404`.
 
 ## Errors
 
